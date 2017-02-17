@@ -10,20 +10,26 @@ import java.util.Map;
 import java.util.Random;
 
 public class CoopGame {
-
+	/**
+	 * Variables accessible by players:
+	 */
+	
+	public Map<Player, int[]> priorities;
+	public int[] piles;
+	public Player[] players; //Note: please only use to list all players or access the nubmer of cards in their hand.
+	
 	public static void main(String[] args) {
 		List<Class<? extends Player>> allPlayers = new ArrayList<Class<? extends Player>>();
+		
 		/**
-		 * Add all players here:
-		 * 
-		 * v v v v v v v v v v v v v v v v 
+		 * Add your player below:
 		 */
 		allPlayers.add(SimpleTom.class);
 		
 		/**
-		 * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+		 * End of player list.
 		 */
-
+		
 		final int nTrails = (int) 1e6;
 
 		// Generate empty score table.
@@ -143,13 +149,11 @@ public class CoopGame {
 	}
 
 	private int nCardsLeft;
-	protected Player[] players;
-
+	
 	private boolean nextPlayer = false;
 
 	private Deque<Integer> stack;
-	public Map<Player, int[]> priorities;
-	public List<String> playerNames;
-	public int[] piles;
+	
+
 
 }

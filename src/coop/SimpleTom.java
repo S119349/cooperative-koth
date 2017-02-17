@@ -6,29 +6,28 @@ public class SimpleTom extends Player {
 
 	public SimpleTom(CoopGame gameState) {
 		super(gameState);
-		selfName = "SimpleTom";
 	}
 
 	@Override
-	void turn() throws PlayerLost {
-		for(int deck = 0; deck<2; ++deck){
+	public void turn() throws PlayerLost {
+		for(int pile = 0; pile<2; ++pile){
 			for(int card : new ArrayList<Integer>(hand)){
-				if(card - 10 == gameState.piles[deck]){
-					playCard(card,deck);
+				if(card - 10 == gameState.piles[pile]){
+					playCard(card,pile);
 					return;
-				} else if(card > gameState.piles[deck]){
-					playCard(card,deck);
+				} else if(card > gameState.piles[pile]){
+					playCard(card,pile);
 					return;
 				}
 			}
 		}
-		for(int deck = 2; deck<4; ++deck){
+		for(int pile = 2; pile<4; ++pile){
 			for(int card : new ArrayList<Integer>(hand)){
-				if(card + 10 == gameState.piles[deck]){
-					playCard(card,deck);
+				if(card + 10 == gameState.piles[pile]){
+					playCard(card,pile);
 					return;
-				} else if(card < gameState.piles[deck]){
-					playCard(card,deck);
+				} else if(card < gameState.piles[pile]){
+					playCard(card,pile);
 					return;
 				}
 			}
@@ -39,7 +38,7 @@ public class SimpleTom extends Player {
 	}
 
 	@Override
-	int[] react() {
+	public int[] react() {
 		return new int[] {0,0,0,0};
 	}
 
